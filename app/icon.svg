@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="box-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#9333ea" />
+      <stop offset="100%" stopColor="#4338ca" />
+    </linearGradient>
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#fde047" />
+      <stop offset="100%" stopColor="#d97706" />
+    </linearGradient>
+  </defs>
+  <!-- Background rounded plate -->
+  <rect width="32" height="32" rx="8" fill="#09090b" />
+  <rect x="0.5" y="0.5" width="31" height="31" rx="7.5" fill="none" stroke="#7e22ce" stroke-opacity="0.4" />
+  
+  <!-- Mystery Chest Box Body -->
+  <path d="M7 14 L16 19 L25 14 L25 24 L16 29 L7 24 Z" fill="url(#box-grad)" stroke="#581c87" stroke-width="1" />
+  
+  <!-- Lid -->
+  <polygon points="16,6 26,11 16,16 6,11" fill="#a855f7" stroke="url(#gold-grad)" stroke-width="1.2" />
+  
+  <!-- Golden Ribbon / Trim -->
+  <line x1="16" y1="19" x2="16" y2="29" stroke="url(#gold-grad)" stroke-width="2" />
+  <line x1="16" y1="6" x2="16" y2="16" stroke="url(#gold-grad)" stroke-width="1.5" />
+  
+  <!-- Center Glowing Core Gem -->
+  <circle cx="16" cy="19" r="2.5" fill="#fde047" />
+  <circle cx="16" cy="19" r="1.2" fill="#ffffff" />
+</svg>
