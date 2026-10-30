@@ -97,7 +97,7 @@ export function CollectionSection({ lastUpdated }: Props) {
           <p className="font-semibold mb-1">Contract Deployment Notice</p>
           <p className="text-amber-300/80">
             Smart contract address is not yet set in <code className="bg-black/40 px-1 py-0.5 rounded">NEXT_PUBLIC_LOOTFLIP_CONTRACT_ADDRESS</code>.
-            Deploy the contract to Botchain Testnet using <code className="bg-black/40 px-1 py-0.5 rounded">npm run deploy:botchain</code> and set the address in your environment.
+            Deploy the contract to Botchain using <code className="bg-black/40 px-1 py-0.5 rounded">npm run deploy:botchain</code> and set the address in your environment.
           </p>
         </div>
       )}
@@ -126,7 +126,7 @@ export function CollectionSection({ lastUpdated }: Props) {
           </div>
           <h3 className="text-base font-bold text-white mb-1">No Collectibles Discovered Yet</h3>
           <p className="text-xs text-zinc-400 leading-relaxed mb-4">
-            Your vault is waiting! Open your first free mystery box above to reveal rare and legendary loot on Botchain Testnet.
+            Your vault is waiting! Open your first free mystery box above to reveal rare and legendary loot on Botchain Mainnet.
           </p>
         </div>
       ) : (
@@ -183,13 +183,13 @@ export function CollectionSection({ lastUpdated }: Props) {
                     <span>{formatDate(item.timestamp)}</span>
                   </span>
                   <a
-                    href={`https://scan.bohr.life/address/${LOOTFLIP_CONTRACT_ADDRESS}`}
+                    href={`${process.env.NEXT_PUBLIC_BOTCHAIN_EXPLORER_URL || "https://scan.botchain.ai"}/address/${LOOTFLIP_CONTRACT_ADDRESS}`}
                     target="_blank"
                     rel="noreferrer"
                     className="hover:text-purple-300 text-zinc-400 flex items-center space-x-0.5"
-                    title="View contract on BohrScan"
+                    title="View contract on BotScan"
                   >
-                    <span>Scan</span>
+                    <span>BotScan</span>
                     <ExternalLink className="w-2.5 h-2.5" />
                   </a>
                 </div>
@@ -251,12 +251,12 @@ export function CollectionSection({ lastUpdated }: Props) {
                       </td>
                       <td className="py-3 px-4 text-right font-sans">
                         <a
-                          href={`https://scan.bohr.life/address/${LOOTFLIP_CONTRACT_ADDRESS}`}
+                          href={`${process.env.NEXT_PUBLIC_BOTCHAIN_EXPLORER_URL || "https://scan.botchain.ai"}/address/${LOOTFLIP_CONTRACT_ADDRESS}`}
                           target="_blank"
                           rel="noreferrer"
                           className="text-purple-400 hover:text-purple-300 inline-flex items-center space-x-1"
                         >
-                          <span>BohrScan</span>
+                          <span>BotScan</span>
                           <ExternalLink className="w-3 h-3" />
                         </a>
                       </td>

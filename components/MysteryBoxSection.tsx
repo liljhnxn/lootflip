@@ -8,7 +8,7 @@ import {
   useWriteContract,
   usePublicClient,
 } from "wagmi";
-import { botchainTestnet, LOOTFLIP_CONTRACT_ADDRESS, LOOTFLIP_ABI } from "../lib/contractConfig";
+import { botchain, LOOTFLIP_CONTRACT_ADDRESS, LOOTFLIP_ABI } from "../lib/contractConfig";
 import { rollRandomCollectible, RollResult } from "../lib/randomSelection";
 import { MysteryBoxIllustration } from "./MysteryBoxIllustration";
 import { ResultCard } from "./ResultCard";
@@ -37,7 +37,7 @@ export function MysteryBoxSection({ onOpeningSuccess }: Props) {
     setMounted(true);
   }, []);
 
-  const isCorrectNetwork = chainId === botchainTestnet.id;
+  const isCorrectNetwork = chainId === botchain.id;
   const isContractSet =
     LOOTFLIP_CONTRACT_ADDRESS &&
     LOOTFLIP_CONTRACT_ADDRESS !== "0x0000000000000000000000000000000000000000";
@@ -52,9 +52,9 @@ export function MysteryBoxSection({ onOpeningSuccess }: Props) {
     // 2. Verify network
     if (!isCorrectNetwork) {
       try {
-        await switchChain({ chainId: botchainTestnet.id });
+        await switchChain({ chainId: botchain.id });
       } catch (err: unknown) {
-        setErrorMessage("Please switch to Botchain Testnet in your wallet.");
+        setErrorMessage("Please switch to Botchain Mainnet in your wallet.");
         return;
       }
     }
@@ -90,7 +90,7 @@ export function MysteryBoxSection({ onOpeningSuccess }: Props) {
       setTxHash(hash);
       setFlowState("confirming");
 
-      // 6. Wait for transaction confirmation on Botchain Testnet
+      // 6. Wait for transaction confirmation on Botchain Mainnet
       if (publicClient) {
         await publicClient.waitForTransactionReceipt({
           hash,
@@ -168,7 +168,7 @@ export function MysteryBoxSection({ onOpeningSuccess }: Props) {
               <span>
                 {flowState === "generating" && "Rolling cryptographic outcome..."}
                 {flowState === "submitting" && "Confirm opening in your wallet..."}
-                {flowState === "confirming" && "Recording opening on Botchain Testnet..."}
+                {flowState === "confirming" && "Recording opening on Botchain..."}
               </span>
             </div>
           )}
@@ -185,12 +185,12 @@ export function MysteryBoxSection({ onOpeningSuccess }: Props) {
               </button>
             ) : !isCorrectNetwork ? (
               <button
-                onClick={() => switchChain({ chainId: botchainTestnet.id })}
+                onClick={() => switchChain({ chainId: botchain.id })}
                 disabled={isSwitching}
                 className="px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-wider text-white bg-amber-600 hover:bg-amber-500 shadow-xl shadow-amber-950/50 transition-all cursor-pointer flex items-center space-x-2"
               >
                 <RefreshCw className={`w-4 h-4 ${isSwitching ? "animate-spin" : ""}`} />
-                <span>SWITCH TO BOTCHAIN TESTNET</span>
+                <span>SWITCH TO BOTCHAIN</span>
               </button>
             ) : (
               <button
@@ -216,7 +216,7 @@ export function MysteryBoxSection({ onOpeningSuccess }: Props) {
             )}
 
             <p className="text-[11px] text-zinc-400 font-medium">
-              Free opening · Testnet demo
+              Free opening · Botchain Mainnet
             </p>
           </div>
 

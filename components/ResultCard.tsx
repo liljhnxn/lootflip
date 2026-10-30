@@ -66,12 +66,12 @@ export function ResultCard({ collectible, txHash, onOpenAnother }: Props) {
         {txHash && (
           <div className="mt-4 pt-3 border-t border-zinc-800/80 w-full flex items-center justify-center">
             <a
-              href={`https://scan.bohr.life/tx/${txHash}`}
+              href={`${process.env.NEXT_PUBLIC_BOTCHAIN_EXPLORER_URL || "https://scan.botchain.ai"}/tx/${txHash}`}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center space-x-1.5 text-xs text-purple-400 hover:text-purple-300 font-mono transition-colors"
             >
-              <span>Recorded on BohrScan: {txHash.slice(0, 10)}...{txHash.slice(-8)}</span>
+              <span>Recorded on BotScan: {txHash.slice(0, 10)}...{txHash.slice(-8)}</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>

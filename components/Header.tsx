@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useAccount, useConnect, useDisconnect, useSwitchChain, useChainId } from "wagmi";
-import { botchainTestnet } from "../lib/contractConfig";
+import { botchain } from "../lib/contractConfig";
 import { Wallet, LogOut, AlertTriangle, ShieldCheck, ChevronDown } from "lucide-react";
 
 export function Header() {
@@ -18,7 +18,7 @@ export function Header() {
     setMounted(true);
   }, []);
 
-  const isCorrectNetwork = chainId === botchainTestnet.id;
+  const isCorrectNetwork = chainId === botchain.id;
 
   const truncateAddress = (addr?: string) => {
     if (!addr) return "";
@@ -50,22 +50,58 @@ export function Header() {
               </span>
               <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold tracking-wider uppercase bg-emerald-950/80 text-emerald-300 border border-emerald-500/30">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-1.5 animate-pulse" />
-                BOTCHAIN TESTNET
+                BOTCHAIN MAINNET
               </span>
             </div>
             <p className="text-[11px] text-zinc-400 hidden sm:block">
-              Chain ID: {botchainTestnet.id}
+              Chain ID: {botchain.id}
             </p>
           </div>
         </div>
 
-        {/* Right Action: Wallet & Network */}
-        <div className="flex items-center space-x-3">
+        {/* Right Action: BOT Chain Links, Wallet & Network */}
+        <div className="flex items-center space-x-2 sm:space-x-3">
+          {/* BOT Chain Website Link */}
+          <a
+            href="https://botchain.ai"
+            target="_blank"
+            rel="noreferrer"
+            className="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-zinc-900/90 text-purple-300 border border-purple-900/50 hover:border-purple-500/70 hover:text-white transition-all shadow-sm"
+          >
+            <img src="/botchain-logo.png" alt="BOT Chain" className="w-3.5 h-3.5 rounded-sm object-cover" />
+            <span>BOT Chain</span>
+            <span className="text-[10px] text-zinc-500">↗</span>
+          </a>
+
+          {/* BOT Chain Explorer Link */}
+          <a
+            href="https://scan.botchain.ai"
+            target="_blank"
+            rel="noreferrer"
+            className="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-zinc-900/90 text-emerald-300 border border-emerald-900/50 hover:border-emerald-500/70 hover:text-white transition-all shadow-sm"
+          >
+            <img src="/botchain-logo.png" alt="BOT Chain" className="w-3.5 h-3.5 rounded-sm object-cover" />
+            <span>Explorer</span>
+            <span className="text-[10px] text-zinc-500">↗</span>
+          </a>
+
+          {/* Verified Mainnet Contract Badge */}
+          <a
+            href="https://scan.botchain.ai/address/0xc62a73e4bf4cca16ff2352d1307554274aa7df9e"
+            target="_blank"
+            rel="noreferrer"
+            className="hidden lg:inline-flex items-center space-x-1.5 px-2.5 py-1.5 rounded-xl text-xs font-mono bg-zinc-900/80 text-amber-300/90 border border-amber-900/40 hover:border-amber-500/60 transition-all shadow-sm"
+            title="View verified contract on BotScan"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+            <span>0xc62a...df9e (Verified ✓)</span>
+          </a>
+
           {mounted && isConnected ? (
             <div className="relative">
               {!isCorrectNetwork ? (
                 <button
-                  onClick={() => switchChain({ chainId: botchainTestnet.id })}
+                  onClick={() => switchChain({ chainId: botchain.id })}
                   disabled={isSwitching}
                   className="flex items-center space-x-2 px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-950/80 text-amber-300 border border-amber-500/40 hover:bg-amber-900/80 transition-all cursor-pointer shadow-md shadow-amber-950/30"
                 >
@@ -92,13 +128,13 @@ export function Header() {
                           <p className="text-xs font-mono text-zinc-200 truncate mt-0.5">{address}</p>
                         </div>
                         <a
-                          href={`https://scan.bohr.life/address/${address}`}
+                          href={`https://scan.botchain.ai/address/${address}`}
                           target="_blank"
                           rel="noreferrer"
                           className="flex items-center space-x-2 px-2 py-1.5 rounded-lg text-xs text-zinc-300 hover:bg-zinc-800 transition-colors"
                         >
                           <ShieldCheck className="w-3.5 h-3.5 text-purple-400" />
-                          <span>View on BohrScan</span>
+                          <span>View on BotScan</span>
                         </a>
                         <button
                           onClick={() => {

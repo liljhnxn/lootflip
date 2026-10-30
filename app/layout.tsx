@@ -5,7 +5,7 @@ import { Providers } from "../components/Providers";
 export const metadata: Metadata = {
   title: "LootFlip 🎁 | Every Box Holds a Surprise - Web3 Mystery Box",
   description:
-    "Open free mystery boxes on Botchain Testnet, discover digital collectibles across Common, Rare, Epic, and Legendary rarities, and record your loot on-chain.",
+    "Open free mystery boxes on Botchain Mainnet, discover digital collectibles across Common, Rare, Epic, and Legendary rarities, and record your loot on-chain.",
   icons: {
     icon: "/icon.svg",
     shortcut: "/icon.svg",

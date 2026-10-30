@@ -57,7 +57,7 @@ export function RarityRates() {
             <span className="font-semibold text-zinc-300">Client-Generated Demo:</span> Drop
             outcomes are generated in-browser using the Web Crypto API (
             <code className="text-purple-300 bg-purple-950/50 px-1 py-0.5 rounded">crypto.getRandomValues</code>
-            ) with unbiased rejection sampling. Results are verified and recorded on Botchain Testnet.
+            ) with unbiased rejection sampling. Results are verified and recorded on Botchain Mainnet.
             Percentages reflect demo intended distributions, not an on-chain oracle guarantee.
           </p>
         </div>

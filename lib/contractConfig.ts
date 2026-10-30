@@ -1,8 +1,8 @@
 import { defineChain } from "viem";
 
-export const botchainTestnet = defineChain({
-  id: 968,
-  name: "Botchain Testnet",
+export const botchain = defineChain({
+  id: 677,
+  name: "Botchain",
   nativeCurrency: {
     decimals: 18,
     name: "BOT",
@@ -10,23 +10,24 @@ export const botchainTestnet = defineChain({
   },
   rpcUrls: {
     default: {
-      http: ["https://rpc.bohr.life"],
+      http: [process.env.NEXT_PUBLIC_BOTCHAIN_RPC_URL || "https://rpc.botchain.ai"],
     },
   },
   blockExplorers: {
     default: {
-      name: "BohrScan",
-      url: "https://scan.bohr.life",
+      name: "BotScan",
+      url: "https://scan.botchain.ai",
     },
   },
-  testnet: true,
 });
 
-// Configure deployed contract address on Botchain Testnet
+export const botchainMainnet = botchain;
+
+// Configure deployed contract address on Botchain Mainnet
 // Set NEXT_PUBLIC_LOOTFLIP_CONTRACT_ADDRESS in .env.local after running `npm run deploy:botchain`
 export const LOOTFLIP_CONTRACT_ADDRESS: `0x${string}` =
   (process.env.NEXT_PUBLIC_LOOTFLIP_CONTRACT_ADDRESS as `0x${string}`) ||
-  "0x12865e4081f7faaddab6061f2dac5726cb232e4d";
+  "0xc62a73e4bf4cca16ff2352d1307554274aa7df9e";
 
 export const LOOTFLIP_ABI = [
   {

@@ -230,7 +230,7 @@ export function MysteryBoxIllustration({
       {/* Runic Ambient Indicator */}
       <div className="mt-3 flex items-center space-x-2 text-xs font-medium tracking-wider text-purple-300/80">
         <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-        <span>BOTCHAIN TESTNET MYSTERY BOX</span>
+        <span>BOTCHAIN MYSTERY BOX</span>
       </div>
     </div>
   );

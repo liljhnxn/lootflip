@@ -1,9 +1,12 @@
 import { createPublicClient, http } from "viem";
-import { botchainTestnet, LOOTFLIP_CONTRACT_ADDRESS, LOOTFLIP_ABI } from "../lib/contractConfig";
+import { botchain, LOOTFLIP_CONTRACT_ADDRESS, LOOTFLIP_ABI } from "../lib/contractConfig";
 
 async function verify() {
   console.log(`🔍 Verifying LootFlip at address: ${LOOTFLIP_CONTRACT_ADDRESS}...`);
-  const client = createPublicClient({ chain: botchainTestnet, transport: http() });
+  const client = createPublicClient({
+    chain: botchain,
+    transport: http(process.env.BOTCHAIN_RPC_URL || "https://rpc.botchain.ai"),
+  });
 
   const bytecode = await client.getBytecode({ address: LOOTFLIP_CONTRACT_ADDRESS });
   console.log("Contract bytecode present:", Boolean(bytecode && bytecode.length > 2));
@@ -31,7 +34,7 @@ async function verify() {
   });
   console.log("Expected rarity for ID 10 (Legendary 3):", rarityLegendary);
 
-  console.log("\n✅ On-chain verification PASSED on Botchain Testnet!");
+  console.log("\n✅ On-chain verification PASSED on Botchain Mainnet!");
 }
 
 verify().catch(console.error);

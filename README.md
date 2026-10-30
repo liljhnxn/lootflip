@@ -1,6 +1,6 @@
 # LootFlip 🎁 — Every Box Holds a Surprise
 
-> A clean, responsive Web3 digital mystery-box application on **Botchain Testnet**. Connect your wallet, crack open free mystery boxes, discover 12 digital collectibles across four rarity tiers, and permanently record your loot on-chain.
+> A clean, responsive Web3 digital mystery-box application on **Botchain Mainnet**. Connect your wallet, crack open free mystery boxes, discover 12 digital collectibles across four rarity tiers, and permanently record your loot on-chain.
 
 ---
 
@@ -12,21 +12,23 @@
   - **RARE (25% intended)**: Arcane Chrono Ring (#4), Phantom Silk Cloak (#5), Frostforged Flail (#6)
   - **EPIC (12% intended)**: Dragon Heart Prism (#7), Voidwalker's Compass (#8), Solaris Aegis (#9)
   - **LEGENDARY (3% intended)**: Crown of the Astral King (#10), Celestial Godblade (#11), Genesis Singularity Core (#12)
-- **True Web Crypto Randomness**: Browser-side selection uses `crypto.getRandomValues()` with unbiased rejection sampling (no `Math.random()`, no modulo bias). Clearly states client-side generation without misleading claims of provably fair oracles.
+- **True Web Crypto Randomness**: Browser-side selection uses `crypto.getRandomValues()` with unbiased rejection sampling (no `Math.random()`, no modulo bias).
 - **On-Chain Solidity Contract**: `LootFlip.sol` validates inputs, assigns unique opening IDs, and emits events. Query functions support pagination for fast loading.
-- **Zero Cost / Zero Hidden Fees**: All box openings are 100% free (only testnet gas). No tokens, staking, or marketplace complexity.
+- **Ultra-Low Gas Fees**: Optimized deployment and interactions on Botchain.
 
 ---
 
-## 🌐 Botchain Testnet Network Details
+## 🌐 Botchain Mainnet Network Details
 
 | Parameter | Value |
 | :--- | :--- |
-| **Network Name** | Botchain Testnet |
-| **Chain ID** | `968` |
-| **RPC URL** | [https://rpc.bohr.life](https://rpc.bohr.life) |
-| **Block Explorer** | [https://scan.bohr.life](https://scan.bohr.life) |
+| **Network Name** | Botchain |
+| **Chain ID** | `677` |
+| **RPC URL** | [https://rpc.botchain.ai](https://rpc.botchain.ai) |
+| **Block Explorer** | [https://scan.botchain.ai](https://scan.botchain.ai) |
 | **Currency Symbol** | `BOT` |
+| **Total Supply** | 150 Million |
+| **Deployed Contract** | `0xc62a73e4bf4cca16ff2352d1307554274aa7df9e` |
 
 ---
 
@@ -65,7 +67,7 @@ Runs 7 comprehensive Solidity tests checking:
 
 ---
 
-## 📦 Deploying to Botchain Testnet
+## 📦 Deploying to Botchain Mainnet
 
 1. Create a `.env` file from `.env.example`:
 ```bash
@@ -73,19 +75,19 @@ cp .env.example .env
 ```
 2. Add your deployer wallet private key:
 ```env
-PRIVATE_KEY="0xYOUR_TESTNET_PRIVATE_KEY"
-BOTCHAIN_RPC_URL="https://rpc.bohr.life"
+PRIVATE_KEY="0xYOUR_PRIVATE_KEY"
+BOTCHAIN_RPC_URL="https://rpc.botchain.ai"
 ```
 3. Run the automated deployment script:
 ```bash
 npm run deploy:botchain
 ```
 This script:
-- Connects to Botchain Testnet (Chain ID 968)
-- Deploys `LootFlip.sol`
-- Waits for transaction confirmation on BohrScan
-- Prints the verified contract address and BohrScan explorer URL
-- Updates `lib/contractConfig.ts` with the deployed address automatically
+- Connects to Botchain Mainnet (Chain ID 677)
+- Deploys `LootFlip.sol` with minimal gas optimization
+- Waits for transaction confirmation on BotScan
+- Prints the verified contract address and BotScan explorer URL
+- Updates `lib/contractConfig.ts`, `.env`, and `.env.local` automatically
 
 4. Set the deployed address in `.env.local` for Next.js:
 ```env
@@ -115,5 +117,5 @@ npm run start
 1. Push your repository to GitHub or GitLab.
 2. Import the project into [Vercel](https://vercel.com).
 3. Set the Environment Variable in Vercel Project Settings:
-   - `NEXT_PUBLIC_LOOTFLIP_CONTRACT_ADDRESS`: Your deployed LootFlip contract address on Botchain Testnet.
+   - `NEXT_PUBLIC_LOOTFLIP_CONTRACT_ADDRESS`: Your deployed LootFlip contract address on Botchain Mainnet (`0xc62a73e4bf4cca16ff2352d1307554274aa7df9e`).
 4. Click **Deploy**. Vercel will build and host the single-page application.

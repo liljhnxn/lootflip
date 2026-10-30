@@ -46,7 +46,7 @@ export interface RollResult {
  * - LEGENDARY (97..99): 3%
  *
  * Note: As stated in the application guidelines, this randomness is client-generated
- * and recorded on Botchain Testnet for demonstration purposes. It does not use an
+ * and recorded on Botchain Mainnet. It does not use an
  * on-chain oracle or claim provably fair cryptographic verification.
  */
 export function rollRandomCollectible(): RollResult {

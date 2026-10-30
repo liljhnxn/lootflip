@@ -3,7 +3,7 @@ pragma solidity ^0.8.24;
 
 /**
  * @title LootFlip
- * @notice On-chain ledger for the LootFlip mystery-box game on Botchain Testnet.
+ * @notice On-chain ledger for the LootFlip mystery-box game on Botchain Mainnet.
  * @dev Records box openings with client-generated randomness. The contract records
  * results and validates collectible ID and rarity integrity, but does not independently
  * generate or verify randomness.
